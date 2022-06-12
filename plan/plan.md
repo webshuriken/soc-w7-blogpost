@@ -22,8 +22,22 @@ Create a component `BlogPost`
   }
   ```
 
-### render
+- Import react ✅
+- store initial boiler plate in `blog` const ✅
+- Render the component with the following tags wrapping all of it in a main tag ✅
+- Add all the object parts as required ✅
 
-For now it will render:
-
--
+```html
+<main className="blog-page">
+  <h1 className="blog-title"></h1>
+  <h3 className="blog-author"></h3>
+  <span className="blog-postdate"></span>
+  <figure>
+    <img src="" alt="" className="blog-img" />
+    <figcaption></figcaption>
+  </figure>
+  <div calssName="blog-content">
+    <p></p>
+  </div>
+</main>
+```
