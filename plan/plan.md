@@ -54,3 +54,25 @@ Create a component `BlogPost`
 - Renders: ✅
   - Display the author and comment ✅
   - Display the capitalised initials of the commenter's full name in a nice little circle ✅
+
+## Task 3 - CommentList
+
+Create a component✅
+Import React✅
+
+### Props:
+
+- `comments` should be an array of objects. ✅
+
+```ts
+{
+  id: string,
+  author: string,
+  content: string
+}
+```
+
+### Renders:
+
+- Render a `Comment` component for each item in the `comments` array (prop). Use the `id` of each comment as its React key. ✅
+  - using a map to create comment components with the key of id ✅
