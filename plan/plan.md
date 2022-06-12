@@ -41,3 +41,16 @@ Create a component `BlogPost`
   </div>
 </main>
 ```
+
+## Task 2 - Comment
+
+- import react ✅
+- Create a component `Comment` ✅
+- Props: ✅
+
+  - `author` which should be a string ✅
+  - `content` which should be a string ✅
+
+- Renders: ✅
+  - Display the author and comment ✅
+  - Display the capitalised initials of the commenter's full name in a nice little circle ✅
