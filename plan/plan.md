@@ -76,3 +76,29 @@ Import React✅
 
 - Render a `Comment` component for each item in the `comments` array (prop). Use the `id` of each comment as its React key. ✅
   - using a map to create comment components with the key of id ✅
+
+## Task 4 - CommentForm
+
+Create a component `CommentForm`✅
+Import react✅
+
+### Props:
+
+- `onSubmit` which is a function which will be called (when the user clicks the button) to let `CommentForm`'s parent component know what the user entered.✅
+
+### State:
+
+- You can have some state(s) for tracking the user's inputs (i.e. their name and comment).✅
+
+### Behaviours:
+
+- On clicking the button, `onSubmit` should be called with the user's input (both their name ✅and their comment). This a way to let the parent component know what the user has entered.
+- If the comment is empty, do not call `onSubmit`.✅
+- Provide a default name for the author (e.g. `"Anon Author"`).✅
+- After calling `onSubmit`, clear the input for the comment but not the input for the name✅
+
+### Renders:
+
+- An input for the author's name (with an "Author" label)✅
+- An input for the comment itself (with a "Comment" label)✅
+- A button containing "Submit"✅
