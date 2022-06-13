@@ -14,11 +14,11 @@ function App() {
   }
 
   return (
-    <>
+    <main>
       <BlogPost blog={blog} />
       <CommentList comments={comments} />
       <CommentForm onSubmit={handleCommentSubmit} />
-    </>
+    </main>
   );
 }
 
