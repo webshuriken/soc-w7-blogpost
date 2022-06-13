@@ -102,3 +102,31 @@ Import react✅
 - An input for the author's name (with an "Author" label)✅
 - An input for the comment itself (with a "Comment" label)✅
 - A button containing "Submit"✅
+
+## Task 5 - App
+
+Create a component `App`✅
+
+- State:
+
+  - `comments` which should be an array of comment objects.✅
+
+- Behaviours:
+
+  - import the list for the blog✅
+
+  - a function which can take in an author and comment (as input), creates a new comment object (with an `author`, `comment` and `id`) and adds the new comment object to the `comments` array (state).✅
+
+- Renders:
+
+  - A `BlogPost` component✅
+
+    - You can use the `blog` object in `data/blogs.js` for the `blog ` prop. (In reality, the blog data might come from an API instead of a hard coded object. However, this is good enough for now.)✅
+
+  - A `CommentList` component✅
+
+    - You should use the `comments` state (from `CommentsSection` state) as the `comments` prop for the `CommentList`✅
+
+  - A `CommentForm` component✅
+
+    - You should pass down the function (described earlier in "behaviours", which takes in an `author` and `comment`) as the `onSubmit` prop for the `CommentForm`✅

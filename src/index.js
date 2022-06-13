@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import CommentForm from "./components/CommentForm";
+import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <CommentForm />
+    <App />
   </React.StrictMode>
 );
 
