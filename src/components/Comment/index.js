@@ -6,7 +6,7 @@ function Comment({author, content}) {
 
   // get author initials
   author.split(' ').forEach(function (item) {
-      authorInitials += item[0];
+      authorInitials += item[0].toUpperCase();
   });
 
   return (

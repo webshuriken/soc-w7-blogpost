@@ -2,38 +2,45 @@ import React, {useState} from 'react';
 
 
 function CommentForm({onSubmit}) {
-  const [userInput, setUserInput] = useState({name: 'Anon Author', comment: ''});
+  // single source of truth, well stored in two places
+  const [author, setAuthor] = useState('Anon Author');
+  const [comment, setComment] = useState('');
 
   function handleChange(e) {
     const {name, value} = e.target;
     if (name === 'author') {
-      setUserInput({...userInput, name: value});
+        // update when user enter a username
+        setAuthor(value);
     }else if (name === 'comment') {
-      setUserInput({...userInput, comment: value});
+      // If user deletes the author input and tried to enter a message without adding a name first reset input value to Anon Author
+      if (author === '') {
+        setAuthor('Anon Author');
+      }
+      // udpate the comment when a comment is entered
+      setComment(value);
     }
-
-    console.log(userInput)
   }
 
   function handleSubmit(e) {
+    // prevent forms default behaviour
     e.preventDefault();
     // check comment is not empty
-    if (userInput.comment === '') {
-      return false;
+    if (comment !== '') {
+      // send the form data to the parent component
+      onSubmit({author, comment})
+      setComment('');
     }
-    onSubmit(userInput)
-    setUserInput({...userInput, comment: ''})
   }
 
   return (
-    <form onChange={handleChange}>
+    <form>
       <label><span>Author:</span>
-        <input type="text" placeholder="Anon Author" name="author" />
+        <input type="text" value={author} name="author" onChange={handleChange} />
       </label>
       <label><span>Comment:</span>
-        <textarea placeholder="Enter your message" name="comment"></textarea>
+        <textarea placeholder="Enter your message" value={comment} name="comment" onChange={handleChange}></textarea>
       </label>
-      <input type="submit" onClick={handleSubmit} />
+      <input type="submit" onClick={handleSubmit} value="Submit" />
     </form>
   );
 }
