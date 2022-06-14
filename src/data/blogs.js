@@ -30,4 +30,4 @@ const blog = [{
   imageAlt: "A couple of coders.",
 }];
 
-export default blog
+export default blog;

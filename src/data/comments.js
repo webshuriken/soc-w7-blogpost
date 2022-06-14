@@ -14,8 +14,8 @@ const comments=[
     {
       postID: "kskweb5HZ8qgshurikenNQUiW",
       id: "jFyGAdfffVsGputh5tO1ga",
-      author: "Chris Meah",
-      content: "Many thank yous",
+      author: "Web Shuriken",
+      content: "Stargate was amazing stuff. Each episode took you to other worlds",
     },
     
   ];
