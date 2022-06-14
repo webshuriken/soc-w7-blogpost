@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 
-function CommentForm({onSubmit}) {
+function CommentForm({onSubmit, postID}) {
   // single source of truth, well stored in two places
   const [author, setAuthor] = useState('Anon Author');
   const [comment, setComment] = useState('');
@@ -27,7 +27,7 @@ function CommentForm({onSubmit}) {
     // check comment is not empty
     if (comment !== '') {
       // send the form data to the parent component
-      onSubmit({author, comment})
+      onSubmit({postID, author, content: comment})
       setComment('');
     }
   }
