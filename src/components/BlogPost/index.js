@@ -1,19 +1,23 @@
 import React from 'react';
+import CommentList from '../CommentList';
+import CommentForm from '../CommentForm';
 
 
-function BlogPost({blog}) {
+function BlogPost({post, comments, handleSubmit}) {
   return (
     <section className="blog-page">
-      <h1 className="blog-title">{blog.title}</h1>
-      <h3 className="blog-author">{blog.author}</h3>
-      <span className="blog-postdate">{blog.datePosted}</span>
+      <h1 className="blog-title">{post.title}</h1>
+      <h3 className="blog-author">{post.author}</h3>
+      <span className="blog-postdate">{post.datePosted}</span>
       <figure>
-        <img src={blog.imageSrc} alt={blog.imageAlt} className="blog-img" />
-        <figcaption>{blog.imageAlt}</figcaption>
+        <img src={post.imageSrc} alt={post.imageAlt} className="blog-img" />
+        <figcaption>{post.imageAlt}</figcaption>
       </figure>
       <div className="blog-content">
-        <p>{blog.content}</p>
+        <p>{post.content}</p>
       </div>
+      <CommentList postID={post.id} comments={comments} />
+      <CommentForm onSubmit={handleSubmit} postID={post.id} />
     </section>
   );
 }
