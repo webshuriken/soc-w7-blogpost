@@ -1,0 +1,30 @@
+.blogpost-page {
+	padding: 1em .6em 2em;
+	max-width: 780px;
+}
+
+.blogpost-author {
+	font-size: 1em;
+	color: rgb(var(--theme-secondary))
+}
+
+.blogpost-postdate {
+	font-size: .8em
+}
+
+.blogpost-page figure {
+	position: relative;
+	margin: 1em 0;
+}
+.blogpost-img {
+	height: auto;
+	width: 100%;
+	box-shadow: 0 0 12px rgba(0,0,0,.3);
+}
+.blogpost-page figure figcaption {
+	color: rgb(var(--theme-secondary));
+}
+
+.blogpost-content {
+	margin-bottom: 2em;
+}

@@ -1,0 +1,47 @@
+.commentform {
+	border-radius: 4px;
+	display: flex;
+	flex-flow: column wrap;
+  background-color: rgb(var(--theme-secondary));
+	padding: 1em .4em;
+}
+
+.commentform label {
+	display: block;
+	color: #fff;
+	margin-bottom: 1em;
+}
+.commentform label span {
+	display: block;
+}
+
+.commentform-name input[type=text],
+.commentform-msg textarea {
+	border-radius: 4px;
+	border: 1px solid rgb(var(--theme-dark));
+	padding: .4em;
+}
+
+.commentform-name input {
+	width: 100%;
+}
+
+
+.commentform-msg textarea {
+	height: 120px;
+	width: 100%;
+}
+
+.commentform-submit {
+	align-self: center;
+	border-radius: 4px;
+	border: 1px solid rgb(var(--theme-dark));
+	width: 200px;
+	padding: .2em 0;
+	font-size: 1.2em;
+	box-shadow: 0 2px 12px rgba(0,0,0,.3);
+	transition: transform .22s;
+}
+.commentform-submit:active {
+	transform: scale(.9)
+}

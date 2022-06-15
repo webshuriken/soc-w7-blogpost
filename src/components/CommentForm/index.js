@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import './index.css';
 
 
 function CommentForm({onSubmit, postID}) {
@@ -33,14 +34,14 @@ function CommentForm({onSubmit, postID}) {
   }
 
   return (
-    <form>
-      <label><span>Author:</span>
+    <form className="commentform">
+      <label className="commentform-name"><span>Author:</span>
         <input type="text" value={author} name="author" onChange={handleChange} />
       </label>
-      <label><span>Comment:</span>
+      <label className="commentform-msg"><span>Comment:</span>
         <textarea placeholder="Enter your message" value={comment} name="comment" onChange={handleChange}></textarea>
       </label>
-      <input type="submit" onClick={handleSubmit} value="Submit" />
+      <input type="submit" onClick={handleSubmit} value="Submit" className="commentform-submit" />
     </form>
   );
 }

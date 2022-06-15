@@ -5,6 +5,15 @@
   text-decoration: none;
   list-style: none;
 }
+
+:root {
+  --theme-main: 230, 230, 230;
+  --theme-secondary: 41, 115, 115;
+  --theme-dark: 57, 57, 58;
+  --theme-accent: 255, 133, 82;
+  font-size: 18px;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -16,4 +25,9 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#root {
+  background-color: rgb(var(--theme-main));
+  color: rgb(var(--theme-dark))
 }

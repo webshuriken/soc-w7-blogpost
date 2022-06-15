@@ -1,0 +1,15 @@
+.app-header {
+	padding: 1em;
+  text-align: center;
+}
+
+main {
+	align-items: center;
+	display: flex;
+	flex-flow: column wrap;
+}
+
+footer {
+	padding: 2em 1em 1em;
+	text-align: center;
+}

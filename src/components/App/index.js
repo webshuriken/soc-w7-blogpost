@@ -1,6 +1,7 @@
 import blog from '../../data/blogs.js';
 import comments from '../../data/comments.js'
-import {useState, useReducer} from 'react';
+import './index.css';
+import {useReducer} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import BlogPost from '../BlogPost'
 
@@ -22,9 +23,15 @@ function App() {
   }
 
   return (
-    <main>
-      {blog.map((post, index) => <BlogPost post={post} key={index} comments={allComments} handleSubmit={handleCommentSubmit} />)}
-    </main>
+    <>
+      <header className="app-header">
+        <h1>SoC W7 Posts</h1>
+      </header>
+      <main>
+        {blog.map((post, index) => <BlogPost post={post} key={index} comments={allComments} handleSubmit={handleCommentSubmit} />)}
+      </main>
+      <footer>Created by Carlos E Alford in association with <a href="https://www.schoolofcode.co.uk/">School of Code</a></footer>
+    </>
   );
 }
 
