@@ -6,7 +6,7 @@ function CommentList({postID, comments}) {
   return (
     <section className="comments-wrapper">
       {comments.reduce((acc, comment) => {
-        return postID === comment.postID ? [...acc, <article><Comment author={comment.author} content={comment.content} key={comment.id} /></article>] : [...acc];
+        return postID === comment.postID ? [...acc, <Comment author={comment.author} content={comment.content} key={comment.id} />] : [...acc];
       }, [])}
     </section>
   );

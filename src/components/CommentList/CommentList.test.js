@@ -4,6 +4,7 @@ import TestRenderer from "react-test-renderer";
 import CommentList from "./index.js";
 import Comment from "../Comment/index.js";
 
+
 const props = {
   comments: [
     {
@@ -61,7 +62,7 @@ describe("CommentList implementation details", () => {
     const children = nearestCommonAncestor._fiber.stateNode.props.children;
     const actualKeys = children.flatMap((node) => node.key);
     const expectedKeys = props.comments.map((comment) => comment.id);
-
+    
     /**
      * Actual implementation may contain keys from other siblings (unlikely but not impossible). So using `arrayContaining`
      * instead of a direct comparison. Probably good enough for now.
@@ -71,5 +72,57 @@ describe("CommentList implementation details", () => {
      * to `expectedKeys`.
      */
     expect(actualKeys).toStrictEqual(expect.arrayContaining(expectedKeys));
+  });
+});
+
+
+describe.each([
+  {
+    messages: [{
+      postID: 'aab',
+      id: 'bbhd1',
+      author: 'Carlos Alford',
+      content: 'I hold on to these moments you know.'
+    },
+    {
+      postID: 'aac',
+      id: 'btbd2',
+      author: 'Carlos Alford',
+      content: 'I hold on to these moments you know.'
+    }],
+    expected: 1
+  },
+  {
+    messages: [{
+      postID: 'aab',
+      id: 'bbhd1',
+      author: 'Carlos Alford',
+      content: 'I hold on to these moments you know.'
+    },
+    {
+      postID: 'aac',
+      id: 'btbd2',
+      author: 'Carlos Alford',
+      content: 'I hold on to these moments you know.'
+    },
+    {
+      postID: 'aab',
+      id: 'bbdd3',
+      author: 'Tess Lupiter',
+      content: 'And I wont let go'
+    }],
+    expected: 2
+  } 
+])('Renders the right comments for postID aab', ({messages, expected}) => {
+  beforeEach(() => {
+    render(<CommentList postID='aab' comments={messages} />)
+  });
+  
+  it(`Should display only ${expected} comments`, () => {
+    // Act
+    const actual = screen.getAllByRole('article');
+
+    // Assert
+    expect(actual).toHaveLength(expected);
   });
 });
