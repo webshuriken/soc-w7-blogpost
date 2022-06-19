@@ -1,6 +1,8 @@
 import { it, expect, beforeEach, describe } from "@jest/globals";
 import { screen, render } from "@testing-library/react";
 import BlogPost from "./index.js";
+import {commentsReducer} from '../../reducers/commentsReducer.js';
+
 
 describe.each([
   {
@@ -50,3 +52,28 @@ describe.each([
     expect(screen.getByText(blog.imageAlt)).toBeInTheDocument();
   });
 });
+
+
+it(`Check reducer inside of App updates with the new blog post message`, () => {
+  // Arrange
+  const content = {
+    postID: "kskweb5HZ8qgshurikenNQUiW",
+    id: "jFyGAdfffVsGputh5tO1ga",
+    author: "Web Shuriken",
+    content: "Stargate was amazing stuff. Each episode took you to other worlds",
+  }
+  const updateAction = {
+    type: 'ADD_COMMENT',
+    comment: content
+  }
+  const updatedState = commentsReducer([], updateAction);
+  // Act
+  expect(updatedState).toEqual([content]);
+});
+
+// it('returns new state for "update" type', () => {
+//   const initialState = [1];
+//   const updateAction = {type: 'update', newState: [1, 2, 3] };
+//   const updatedState = fooReducer(initialState, udpateAction);
+//   expect(updatedState).toEqual([1, 2, 3]);
+// });
