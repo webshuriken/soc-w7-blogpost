@@ -1,17 +1,39 @@
-import blog from '../../data/blogs.js';
-import comments from '../../data/comments.js'
 import './index.css';
-import {useReducer} from 'react';
+import {useEffect, useState, useReducer} from 'react';
 import BlogPost from '../BlogPost'
 import { commentsReducer } from '../../reducers/commentsReducer.js'
 
 
 function App() {
-  const [allComments, dispatch] = useReducer(commentsReducer, comments);
+  const [allComments, dispatch] = useReducer(commentsReducer, []);
+  const [blog, setBlog] = useState([]);
 
   function handleCommentSubmit(comment) {
     dispatch({type: 'ADD_COMMENT', comment})
   }
+
+  // grab comments and blogs from backend
+  useEffect(() => {
+    // API
+    const URI = `http://localhost:4000/api`;
+
+    // fetch all posts and comments from API
+    const getPosts = async () => {
+      const response = await fetch(`${URI}/blogpost`);
+      const posts = await response.json();
+      setBlog(posts.payload)
+    }
+    const getComments = async () => {
+      const response = await fetch(`${URI}/comments`);
+      const comments = await response.json();
+      dispatch({
+        type: 'POPULATE_COMMENTS',
+        value: comments.payload,
+      });
+    }
+    getPosts();
+    getComments();
+  },[])
 
   return (
     <>
@@ -19,7 +41,10 @@ function App() {
         <h1>SoC W7 Posts</h1>
       </header>
       <main>
-        {blog.map((post, index) => <BlogPost post={post} key={index} comments={allComments} handleSubmit={handleCommentSubmit} />)}
+        {
+          blog.length === 0 
+          ? <h2>No posts available</h2>
+          : blog.map((post, index) => <BlogPost post={post} key={index} comments={allComments} handleSubmit={handleCommentSubmit} />)}
       </main>
       <footer>Created by Carlos E Alford in association with <a href="https://www.schoolofcode.co.uk/">School of Code</a></footer>
     </>
