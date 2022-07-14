@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@auth0/auth0-react": "^1.10.2",
     "@testing-library/jest-dom": "^5.16.3",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^14.0.4",
@@ -14,7 +15,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts -r dotenv/config start",
     "build": "react-scripts build",
     "test": "react-scripts test --json --outputFile=results.json",
     "eject": "react-scripts eject"

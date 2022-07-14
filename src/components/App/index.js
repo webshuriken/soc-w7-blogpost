@@ -1,7 +1,8 @@
 import './index.css';
 import {useEffect, useState, useReducer} from 'react';
-import BlogPost from '../BlogPost'
 import { commentsReducer } from '../../reducers/commentsReducer.js'
+import BlogPost from '../BlogPost'
+import NavBar from '../NavBar';
 
 
 function App() {
@@ -37,9 +38,7 @@ function App() {
 
   return (
     <>
-      <header className="app-header">
-        <h1>SoC W7 Posts</h1>
-      </header>
+      <NavBar />
       <main>
         {
           blog.length === 0 
