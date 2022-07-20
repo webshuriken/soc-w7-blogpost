@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
 
 
-export const useApi = (urlEndpoint = '') => {
-  const url= `http://localhost:4000/api`;
+export const useApi = () => {
   const [endpoint, setEndpoint] = useState('blogpost');
   const [data, setData] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [apiLoading, setApiLoading] = useState(true);
+  const serverUrl = process.env.REACT_APP_AUTH0_SERVER_URL;
 
   const callApi = async () => {
     try {
-      const response = await fetch(`${url}/${endpoint}`);
+      const response = await fetch(`${serverUrl}/api/${endpoint}`);
       const responseData = await response.json();
-      setLoading(false);
+      setApiLoading(false);
       setData(responseData.payload);
     }catch (error) {
       console.error(error.message);
     }
-  }
 
+  }
+  
   useEffect(() => {
     callApi();
   }, [endpoint]);
 
-  return { data, loading, setEndpoint }
+  return { data, apiLoading, setEndpoint }
 }

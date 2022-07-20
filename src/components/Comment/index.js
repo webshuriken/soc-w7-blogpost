@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 
 
-function Comment({author, content}) {
+function Comment({author, content, id}) {
   let authorInitials = '';
 
   // get author initials

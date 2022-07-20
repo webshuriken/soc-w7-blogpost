@@ -1,10 +1,13 @@
 import React from 'react';
 import './index.css';
+import { useAuth0 } from '@auth0/auth0-react';
 import CommentList from '../CommentList';
 import CommentForm from '../CommentForm';
 
 
-function BlogPost({post, comments, handleSubmit}) {
+function BlogPost({post, comments, handleSubmit, deleteComment}) {
+  const { isAuthenticated } = useAuth0();
+
   return (
     <section className="blogpost-page">
       <h1 className="blogpost-title">{post.title}</h1>
@@ -17,8 +20,8 @@ function BlogPost({post, comments, handleSubmit}) {
       <div className="blogpost-content">
         <p>{post.content}</p>
       </div>
-      <CommentList postID={post.id} comments={comments} />
-      <CommentForm onSubmit={handleSubmit} postID={post.id} />
+      <CommentList postID={post.id} comments={comments} deleteComment={deleteComment} />
+      {isAuthenticated && <CommentForm onSubmit={handleSubmit} postID={post.id} />}
     </section>
   );
 }
