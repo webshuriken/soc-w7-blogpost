@@ -21,7 +21,7 @@ const Auth0ProviderWithHistory = ({ children }) => {
       redirectUri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
       audience={audience}
-      scope="read:current_user update:current_user_metadata create:posts create:comments"
+      scope="read:current_user update:current_user_metadata create:posts read:posts"
     >
       {children}
     </Auth0Provider>

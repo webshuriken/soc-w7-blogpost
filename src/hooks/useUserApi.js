@@ -15,7 +15,6 @@ export const useUserApi = () => {
         audience: serverUrl,
         scope: 'update:current_user_metadata'
       }
-
       // start with a silent request for the token
       const token = await getAccessTokenSilently(opts)
       .catch((err)=> {

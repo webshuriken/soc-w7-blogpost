@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
 
-export const usePrivateApi = (endpointUri) => {
-  const [endpoint, setEndpoint] = useState('');
+export const usePrivateApi = () => {
+  const [endpoint, setEndpoint] = useState('profile');
   const [apiLoading, setApiLoading] = useState(true);
   const [data, setData] = useState('');
   const serverUrl = process.env.REACT_APP_AUTH0_SERVER_URL;
@@ -13,12 +13,15 @@ export const usePrivateApi = (endpointUri) => {
 
   const callApi = async () => {
     try {
-      const uri = endpoint || endpointUri;
       const userId = user.sub.split('|')[1];
-      const token = await getAccessTokenSilently();
-      const response = await fetch(`${serverUrl}/api/private/${uri}/${userId}`, {
+
+      // start with a silent request for the token
+      const token = await getAccessTokenSilently()
+
+      const response = await fetch(`${serverUrl}/api/private/${endpoint}/${userId}`, {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
         }
       });
       const responseData = await response.json();
@@ -26,7 +29,7 @@ export const usePrivateApi = (endpointUri) => {
       setData(responseData.payload);
 
     }catch(error) {
-      console.error(error.message)
+      console.error("You are not supposed to be here.")
     }
   }
 

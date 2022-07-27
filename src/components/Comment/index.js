@@ -2,7 +2,7 @@ import React from 'react';
 import './index.css';
 
 
-function Comment({author, content, id}) {
+function Comment({author, content, deleteComment, id}) {
   let authorInitials = '';
 
   // get author initials
@@ -12,6 +12,7 @@ function Comment({author, content, id}) {
 
   return (
     <article className="comment">
+      <button onClick={() => deleteComment(id)}>DELETE</button>
       <span className="comment-icon">{authorInitials}</span>
       <h4 className="comment-author">{author}</h4>
       <p className="comment-content">{content}</p>

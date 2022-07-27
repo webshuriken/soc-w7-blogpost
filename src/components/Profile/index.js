@@ -5,7 +5,7 @@ import { usePrivateApi } from "../../hooks/usePrivateApi";
 
 const Profile = () => {
   const { user, isLoading, isAuthenticated } = useAuth0();
-  const { data, apiLoading } = usePrivateApi('profile');
+  const { data, apiLoading } = usePrivateApi();
 
   // in case of slow connections
   if (isLoading) {
